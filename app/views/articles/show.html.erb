@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @article.url %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @article.score %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @article.user.name %>
+</p>
+
+<%= link_to 'Back', articles_path %>

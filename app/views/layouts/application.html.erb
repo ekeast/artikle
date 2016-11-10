@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CapstoneRebuild</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container">
+      <div id="navbar">
+        <% if current_user %>
+          <ul class="nav navbar-nav pull-right">
+            <li><%= image_tag current_user.image_url, alt: current_user.name %></li>
+            <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'My Page', my_articles_path %></li>
+            <li><%= link_to 'View Articles', articles_path %></li>
+          </ul>
+        <% else %>
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'Login With Facebook', '/auth/facebook' %></li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

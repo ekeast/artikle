@@ -1,0 +1,2 @@
+Could not find generator 'RemoveMetaFromArticles,'. Maybe you meant 'resource_route', 'controller' or 'test_unit:mailer'
+Run `rails generate --help` for more options.

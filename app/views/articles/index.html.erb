@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Articles</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Rating</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articles.sort_by{ |article| article.average_rating }.first(25).reverse.each do |article| %>
+      <tr>
+        <td><%= article.url %></td>
+        <% if article.ratings.where(user_id: current_user.id).first %>
+        <td>You rated it:<%= article.ratings.where(user_id: current_user.id).first.value %> </br> <strong> Update Rating:</strong> <%= render 'ratings/rater', rating: article.ratings.where(user_id: current_user.id).first, article: article %></td>
+        <% else %>
+        <td><%= article.average_rating %><%= render 'ratings/rater', rating: Rating.new, article: article %></td>
+        <% end %>
+        <td>Posted By <%= article.user.name %></td>
+        <td><%= link_to 'Show', article %></td>
+        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Article', new_article_path %>

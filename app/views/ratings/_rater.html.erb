@@ -1,0 +1,7 @@
+<%= form_for [article, rating] do |f| %>
+  <div class="form">
+    <%= f.label :value %>
+    <%= f.select :value, [[1],[2],[3],[4],[5]] %>
+    <%= f.submit "Rate" %>
+  </div>
+<% end %>
